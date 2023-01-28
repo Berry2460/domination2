@@ -21,7 +21,7 @@ set model=n
 set nosave=n
 if not exist "Data\save.bat" set nosave=y
 if "%nosave%"=="y" set score=0
-if "%nosave%"=="y" set render=7
+if "%nosave%"=="y" set render=6
 if "%nosave%"=="y" echo set score=%score% >"Data\save.bat"
 if "%nosave%"=="y" echo set render=%render% >>"Data\save.bat"
 if exist "Data\save.bat" call "Data\save.bat"
@@ -66,13 +66,11 @@ goto gameoptions
 :renderdistanceset
 echo set score=%score% >"Data\save.bat"
 echo set render=%render% >>"Data\save.bat"
-if %render% gtr 9 set render=9
+if %render% gtr 7 set render=7
 if %render% lss 5 set render=5
-if "%render%"=="9" set levels=Maximum
-if "%render%"=="8" set levels=High
-if "%render%"=="7" set levels=Normal
-if "%render%"=="6" set levels=Low
-if "%render%"=="5" set levels=Minimum
+if "%render%"=="7" set levels=High
+if "%render%"=="6" set levels=Medium
+if "%render%"=="5" set levels=Low
 cls
 set input=0
 echo Domination Settings
@@ -457,8 +455,8 @@ if exist "%game%\Domination II Game\p4.bat" set m%p1x%m%p1y%=4
 set /a cx=%random%*20/32768+1
 set /a cy=%random%*12/32768+1
 if not "!m%cx%m%cy%!"=="n" goto setstart
-echo set c%player%x=%cx% >"%game%\Domination II Game\p%player%.bat"
-echo set c%player%y=%cy% >>"%game%\Domination II Game\p%player%.bat"
+echo set p%player%x=%cx% >"%game%\Domination II Game\p%player%.bat"
+echo set p%player%y=%cy% >>"%game%\Domination II Game\p%player%.bat"
 goto lobby
 :lobby
 cls
